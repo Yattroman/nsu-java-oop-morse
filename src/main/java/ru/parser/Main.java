@@ -3,7 +3,11 @@ package ru.parser;
 public class Main {
 
     public static void main(String[] args) throws Exception {
-       System.out.println("Zdarova!");
+        try {
+            MorseHandler morseHandler = new MorseHandler();
+        } catch (Throwable e){
+            System.out.println("Error!");
+        }
     }
 
 }
