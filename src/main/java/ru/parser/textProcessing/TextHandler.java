@@ -20,28 +20,11 @@ public class TextHandler {
         try
         {
             _reader = new BufferedReader(new InputStreamReader(new FileInputStream(fileName)));
-            //_reader = new BufferedReader(new FileReader(fileName));
-            //readTextLine();
         }
         catch (IOException e)
         {
             System.err.println("Error while reading file: " + e.getLocalizedMessage());
         }
-        /*finally
-        {
-            if (null != _reader)
-            {
-                try
-                {
-                    _reader.close();
-                }
-                catch (IOException e)
-                {
-                    e.printStackTrace(System.err);
-                }
-            }
-        }
-         */
     }
 
     public boolean readTextLine(){
@@ -52,15 +35,13 @@ public class TextHandler {
             if(!_oneLineHaveRead) {
                 _oneLineHaveRead = true;
             }
-
-            return true;
         }
         catch (IOException e)
         {
             System.err.println("Error while reading symbol: " + e.getLocalizedMessage());
         }
 
-        return false;
+        return _line != null;
     }
 
     public char getSymbol(){

@@ -23,10 +23,12 @@ public class Alphabet {
         }
     }
 
-    public void test(){
-        String test = encoderMap.get('A').getMorseSymbol();
-        System.out.println(encoderMap.get('A').getMorseSymbol());
-        System.out.println(encoderMap.get('9').getMorseSymbol());
+    public HashMap<Character, MorseSymbol> getEncoderMap(){
+        return encoderMap;
+    }
+
+    public HashMap<MorseSymbol, Character> getDecoderMap(){
+        return decoderMap;
     }
 
 }
