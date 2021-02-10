@@ -21,6 +21,8 @@ public class Encoder {
                 }
             } else if(line.charAt(i) == ' '){
                 result.append(' ');
+            } else {
+                // Кинуть эксепшн
             }
         }
 

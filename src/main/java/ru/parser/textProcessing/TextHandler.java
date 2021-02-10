@@ -10,7 +10,6 @@ public class TextHandler {
     private String _line;
     private int _indexInLine;
     private boolean _oneLineHaveRead;
-    private SymbolStat _symbolStat;
 
     public String getLine(){
         return _line;
