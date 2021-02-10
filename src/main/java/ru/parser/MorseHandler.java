@@ -34,6 +34,7 @@ public class MorseHandler {
         _decoder = new Decoder();
         _encoder = new Encoder();
         _alphabet = new Alphabet();
+        _symbolsStatistics = new SymbolStat();
         _alphabet.uploadMorseAlphabet("D:\\NSU\\JAVA_NSU_LABS\\Lab1\\src\\main\\resources\\alphabets\\morse_english.txt");
     }
 
@@ -41,9 +42,9 @@ public class MorseHandler {
         if(_mode.equals("code")){
             while(_mainTextHandler.readTextLine()){
                 String temp = _encoder.encodeLine(_mainTextHandler.getLine(), _alphabet, _symbolsStatistics);
-                // Пока что так, вскоре надо реализовать запись в файл
                 System.out.println(temp);
             }
+            _mainTextHandler.writeSymbolsStatistics(_symbolsStatistics);
         } else if(_mode.equals("decode")){
 
         }

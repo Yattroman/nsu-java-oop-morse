@@ -6,6 +6,7 @@ import java.io.*;
 public class TextHandler {
 
     private BufferedReader _reader;
+    private FileWriter _writer;
     private String _line;
     private int _indexInLine;
     private boolean _oneLineHaveRead;
@@ -22,11 +23,13 @@ public class TextHandler {
         _oneLineHaveRead = false;
         try
         {
+            String resFileName = "D:\\NSU\\JAVA_NSU_LABS\\Lab1\\src\\main\\resources\\result\\resultStatistics.txt";
             _reader = new BufferedReader(new InputStreamReader(new FileInputStream(fileName)));
+            _writer = new FileWriter(resFileName);
         }
         catch (IOException e)
         {
-            System.err.println("Error while reading file: " + e.getLocalizedMessage());
+            System.err.println("Error while reading file or file for writing results isn't avaliable: " + e.getLocalizedMessage());
         }
     }
 
@@ -63,12 +66,15 @@ public class TextHandler {
         return symbol;
     }
 
-    public void writeSymbol(){
-
-    }
-
-    public void writeText(){
-
+    public void writeSymbolsStatistics(SymbolStat symbolStat){
+        try {
+            for (var i: symbolStat.getSymbolsStatistics().keySet()){
+                    _writer.write(i.toString() + ": " + symbolStat.getSymbolsStatistics().get(i).toString() + "\n");
+            }
+            _writer.close();
+        } catch (IOException e) {
+            System.err.println("Error while printing results: " + e.getLocalizedMessage());
+        }
     }
 
 }
