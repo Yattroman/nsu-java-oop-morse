@@ -1,9 +1,12 @@
 package ru.parser;
 
-public class SymbolStat {
-    private char _symbol;
-    private int _number;
+import java.util.HashMap;
 
-    // public equals();
-    // public hashCode();
+public class SymbolStat {
+
+    private HashMap<Character, Integer> symbolsStatistics;
+
+    public HashMap<Character, Integer> getSymbolsStatistics() {
+        return symbolsStatistics;
+    }
 }

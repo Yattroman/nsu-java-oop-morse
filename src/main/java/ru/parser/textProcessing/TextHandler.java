@@ -1,4 +1,6 @@
 package ru.parser.textProcessing;
+import ru.parser.SymbolStat;
+
 import java.io.*;
 
 public class TextHandler {
@@ -7,6 +9,7 @@ public class TextHandler {
     private String _line;
     private int _indexInLine;
     private boolean _oneLineHaveRead;
+    private SymbolStat _symbolStat;
 
     public String getLine(){
         return _line;

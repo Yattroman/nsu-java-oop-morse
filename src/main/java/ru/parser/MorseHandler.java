@@ -1,6 +1,5 @@
 package ru.parser;
 import ru.parser.alphabet.Alphabet;
-import ru.parser.alphabet.MorseSymbol;
 import ru.parser.decoder.Decoder;
 import ru.parser.encoder.Encoder;
 import ru.parser.textProcessing.TextHandler;
@@ -16,14 +15,15 @@ public class MorseHandler {
     private TextHandler _mainTextHandler;
     private Alphabet _alphabet;
     private String _mode;
+    private SymbolStat _symbolsStatistics;
 
     public MorseHandler(){
         BufferedReader _reader = new BufferedReader(new InputStreamReader(System.in));
         try {
             String[] temp = _reader.readLine().split(" ");
-            if(temp[0] == "code" || temp[0] == "encode"){
+            if(temp[0].equals("code") || temp[0].equals("encode")){
                 _mode = temp[0];
-                _mainTextHandler = new TextHandler(temp[1]);
+                _mainTextHandler = new TextHandler("D:\\NSU\\JAVA_NSU_LABS\\Lab1\\src\\main\\resources\\testTexts\\" + temp[1]);
             } else {
                 // Кидаем эксепшн
             }
@@ -34,16 +34,17 @@ public class MorseHandler {
         _decoder = new Decoder();
         _encoder = new Encoder();
         _alphabet = new Alphabet();
+        _alphabet.uploadMorseAlphabet("D:\\NSU\\JAVA_NSU_LABS\\Lab1\\src\\main\\resources\\alphabets\\morse_english.txt");
     }
 
     public void doWork(){
-        if(_mode == "code"){
+        if(_mode.equals("code")){
             while(_mainTextHandler.readTextLine()){
-                String temp = _encoder.encodeLine(_mainTextHandler.getLine(), _alphabet);
-                // Пока что так
+                String temp = _encoder.encodeLine(_mainTextHandler.getLine(), _alphabet, _symbolsStatistics);
+                // Пока что так, вскоре надо реализовать запись в файл
                 System.out.println(temp);
             }
-        } else if(_mode == "decode"){
+        } else if(_mode.equals("decode")){
 
         }
     }
