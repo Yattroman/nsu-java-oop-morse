@@ -21,7 +21,7 @@ public class MorseHandler {
         BufferedReader _reader = new BufferedReader(new InputStreamReader(System.in));
         try {
             String[] temp = _reader.readLine().split(" ");
-            if(temp[0].equals("code") || temp[0].equals("encode")){
+            if(temp[0].equals("code") || temp[0].equals("decode")){
                 _mode = temp[0];
                 _mainTextHandler = new TextHandler("D:\\NSU\\JAVA_NSU_LABS\\Lab1\\src\\main\\resources\\testTexts\\" + temp[1]);
             } else {
@@ -46,7 +46,11 @@ public class MorseHandler {
             }
             _mainTextHandler.writeSymbolsStatistics(_symbolsStatistics);
         } else if(_mode.equals("decode")){
-
+            while(_mainTextHandler.readTextLine()){
+                String temp = _decoder.decodeLine(_mainTextHandler.getLine(), _alphabet, _symbolsStatistics);
+                System.out.println(temp);
+            }
+            _mainTextHandler.writeSymbolsStatistics(_symbolsStatistics);
         }
     }
 
