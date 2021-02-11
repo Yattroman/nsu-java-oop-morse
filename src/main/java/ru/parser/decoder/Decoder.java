@@ -13,11 +13,25 @@ public class Decoder {
         for(String a : temp){
             MorseSymbol tempMorseSymb = new MorseSymbol(a);
             if(alpha.getDecoderMap().containsKey(tempMorseSymb)) {
-                result.append(alpha.getDecoderMap().get(tempMorseSymb));
+                char symbol = alpha.getDecoderMap().get(tempMorseSymb);
+                result.append(symbol);
+
+                if(!symbolStat.getSymbolsStatistics().containsKey(symbol)){
+                    symbolStat.initSymbolAmount(symbol);
+                } else {
+                    symbolStat.increaseSymbolAmount(symbol);
+                }
+
             } else if(a.equals("")) {
                 result.append(' ');
             } else {
                 result.append('#');
+
+                if(!symbolStat.getSymbolsStatistics().containsKey('#')){
+                    symbolStat.initSymbolAmount('#');
+                } else {
+                    symbolStat.increaseSymbolAmount('#');
+                }
             }
         }
 

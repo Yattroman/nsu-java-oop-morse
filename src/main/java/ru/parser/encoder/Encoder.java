@@ -13,16 +13,23 @@ public class Encoder {
         for(int i = 0; i < line.length(); ++i){
             if(alpha.getEncoderMap().containsKey(line.charAt(i))){
                 result.append(alpha.getEncoderMap().get(line.charAt(i)).getMorseSymbol() + ' ');
+
                 if(!symbolStat.getSymbolsStatistics().containsKey(line.charAt(i))){
-                    symbolStat.getSymbolsStatistics().put(line.charAt(i), 1);
+                    symbolStat.initSymbolAmount(line.charAt(i));
                 } else {
-                    symbolStat.getSymbolsStatistics().replace(line.charAt(i),
-                            symbolStat.getSymbolsStatistics().get(line.charAt(i)), symbolStat.getSymbolsStatistics().get(line.charAt(i)) + 1);
+                    symbolStat.increaseSymbolAmount(line.charAt(i));
                 }
+
             } else if(line.charAt(i) == ' '){
                 result.append(' ');
             } else {
                 result.append("# ");
+
+                if(!symbolStat.getSymbolsStatistics().containsKey(line.charAt(i))){
+                    symbolStat.initSymbolAmount(line.charAt(i));
+                } else {
+                    symbolStat.increaseSymbolAmount(line.charAt(i));
+                }
             }
         }
 

@@ -13,4 +13,12 @@ public class SymbolStat {
     public HashMap<Character, Integer> getSymbolsStatistics() {
         return symbolsStatistics;
     }
+
+    public void increaseSymbolAmount(Character symbol){
+        symbolsStatistics.replace(symbol, symbolsStatistics.get(symbol), symbolsStatistics.get(symbol) + 1); // Но в классе все автоматически инициализируется
+    }
+
+    public void initSymbolAmount(Character symbol){
+        symbolsStatistics.put(symbol, 1);
+    }
 }
