@@ -1,25 +1,22 @@
-package ru.parser.alphabet;
+package ru.nsu.yattroman.statisctics;
 
 import java.util.Objects;
 
-public class MorseSymbol {
-
-    private String _mSymbol;
-
-    public MorseSymbol(String mSymbol){
-        _mSymbol = mSymbol;
-    }
-
-    public String getMorseSymbol() {
-        return _mSymbol;
-    }
+public class Letter {
+    private int _amount;
+    private char _symbol;
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        MorseSymbol that = (MorseSymbol) o;
-        return Objects.equals(_mSymbol, that._mSymbol);
+        Letter that = (Letter) o;
+        return Objects.equals(_symbol, that._symbol) && (_amount == that._amount);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(_symbol);
     }
 
     /*
@@ -37,8 +34,4 @@ public class MorseSymbol {
     }
     */
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(_mSymbol);
-    }
 }

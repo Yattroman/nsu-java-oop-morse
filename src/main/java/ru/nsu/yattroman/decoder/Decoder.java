@@ -1,8 +1,7 @@
-package ru.parser.decoder;
+package ru.nsu.yattroman.decoder;
 
-import ru.parser.SymbolStat;
-import ru.parser.alphabet.Alphabet;
-import ru.parser.alphabet.MorseSymbol;
+import ru.nsu.yattroman.statisctics.SymbolStat;
+import ru.nsu.yattroman.alphabet.Alphabet;
 
 public class Decoder {
 
@@ -11,9 +10,8 @@ public class Decoder {
 
         String[] temp = line.split(" ");
         for(String a : temp){
-            MorseSymbol tempMorseSymb = new MorseSymbol(a);
-            if(alpha.getDecoderMap().containsKey(tempMorseSymb)) {
-                char symbol = alpha.getDecoderMap().get(tempMorseSymb);
+            if(alpha.getDecoderMap().containsKey(a)) {
+                char symbol = alpha.getDecoderMap().get(a);
                 result.append(symbol);
 
                 if(!symbolStat.getSymbolsStatistics().containsKey(symbol)){

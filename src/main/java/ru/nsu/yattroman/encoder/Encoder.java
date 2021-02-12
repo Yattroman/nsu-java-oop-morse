@@ -1,7 +1,7 @@
-package ru.parser.encoder;
+package ru.nsu.yattroman.encoder;
 
-import ru.parser.SymbolStat;
-import ru.parser.alphabet.Alphabet;
+import ru.nsu.yattroman.statisctics.SymbolStat;
+import ru.nsu.yattroman.alphabet.Alphabet;
 
 public class Encoder {
 
@@ -12,7 +12,7 @@ public class Encoder {
 
         for(int i = 0; i < line.length(); ++i){
             if(alpha.getEncoderMap().containsKey(line.charAt(i))){
-                result.append(alpha.getEncoderMap().get(line.charAt(i)).getMorseSymbol() + ' ');
+                result.append(alpha.getEncoderMap().get(line.charAt(i)) + ' ');
 
                 if(!symbolStat.getSymbolsStatistics().containsKey(line.charAt(i))){
                     symbolStat.initSymbolAmount(line.charAt(i));

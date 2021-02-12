@@ -1,4 +1,4 @@
-package ru.parser;
+package ru.nsu.yattroman.statisctics;
 
 import java.util.HashMap;
 

@@ -1,8 +1,9 @@
-package ru.parser;
-import ru.parser.alphabet.Alphabet;
-import ru.parser.decoder.Decoder;
-import ru.parser.encoder.Encoder;
-import ru.parser.textProcessing.TextHandler;
+package ru.nsu.yattroman;
+import ru.nsu.yattroman.alphabet.Alphabet;
+import ru.nsu.yattroman.decoder.Decoder;
+import ru.nsu.yattroman.encoder.Encoder;
+import ru.nsu.yattroman.statisctics.SymbolStat;
+import ru.nsu.yattroman.textProcessing.TextHandler;
 
 import java.io.BufferedReader;
 import java.io.IOException;
