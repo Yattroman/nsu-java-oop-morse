@@ -6,7 +6,8 @@ import java.io.*;
 public class TextHandler {
 
     private BufferedReader _reader;
-    private FileWriter _writer;
+    private FileWriter _writerSS;
+    private FileWriter _writerResultText;
     private String _line;
     private int _indexInLine;
     private boolean _oneLineHaveRead;
@@ -22,13 +23,16 @@ public class TextHandler {
         _oneLineHaveRead = false;
         try
         {
-            String resFileName = "D:\\NSU\\JAVA_NSU_LABS\\Lab1\\src\\main\\resources\\result\\resultStatistics.txt";
             _reader = new BufferedReader(new InputStreamReader(new FileInputStream(fileName)));
-            _writer = new FileWriter(resFileName);
+
+            String resSSFileName = "D:\\NSU\\JAVA_NSU_LABS\\Lab1\\src\\main\\resources\\result\\resultStatistics.txt";
+            _writerSS = new FileWriter(resSSFileName);
+
+            _writerResultText = null;
         }
         catch (IOException e)
         {
-            System.err.println("Error while reading file or file for writing results isn't avaliable: " + e.getLocalizedMessage());
+            System.err.println("Error while reading file: " + e.getLocalizedMessage());
         }
     }
 
@@ -49,28 +53,23 @@ public class TextHandler {
         return _line != null;
     }
 
-    public char getSymbol(){
-        char symbol = '@';
-
-        if( _indexInLine >= _line.length() || !_oneLineHaveRead ){
-            _indexInLine = 0;
-            readTextLine();
-            symbol = _line.charAt(_indexInLine);
-        } else if( _indexInLine < _line.length() ){
-            symbol = _line.charAt(_indexInLine);
-        }
-
-        ++_indexInLine;
-
-        return symbol;
-    }
-
     public void writeSymbolsStatistics(SymbolStat symbolStat){
         try {
             for (var i: symbolStat.getSymbolsStatistics().keySet()){
-                    _writer.write(i.toString() + ": " + symbolStat.getSymbolsStatistics().get(i).toString() + "\n");
+                    _writerSS.write(i.toString() + ": " + symbolStat.getSymbolsStatistics().get(i).toString() + "\n");
             }
-            _writer.close();
+            _writerSS.close();
+        } catch (IOException e) {
+            System.err.println("Error while printing symbol statistics: " + e.getLocalizedMessage());
+        }
+    }
+
+    public void writeResultInFile(String filename, String resultString){
+        try {
+            _writerResultText = new FileWriter("D:\\NSU\\JAVA_NSU_LABS\\Lab1\\src\\main\\resources\\result\\" + filename);
+            _writerResultText.write(resultString);
+            _writerResultText.close();
+            System.out.println("Successfully worked! You can see result in: " + filename);
         } catch (IOException e) {
             System.err.println("Error while printing results: " + e.getLocalizedMessage());
         }

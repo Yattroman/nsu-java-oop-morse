@@ -39,19 +39,24 @@ public class MorseHandler {
     }
 
     public void doWork(){
+        String resultText = "";
         if(_mode.equals("code")){
             while(_mainTextHandler.readTextLine()){
                 String temp = _encoder.encodeLine(_mainTextHandler.getLine(), _alphabet, _symbolsStatistics);
-                System.out.println(temp);
+                resultText += temp + '\n';
             }
-            _mainTextHandler.writeSymbolsStatistics(_symbolsStatistics);
+            _mainTextHandler.writeResultInFile("encoderRes.txt", resultText);
         } else if(_mode.equals("decode")){
             while(_mainTextHandler.readTextLine()){
                 String temp = _decoder.decodeLine(_mainTextHandler.getLine(), _alphabet, _symbolsStatistics);
-                System.out.println(temp);
+                resultText += temp + '\n';
             }
-            _mainTextHandler.writeSymbolsStatistics(_symbolsStatistics);
+            _mainTextHandler.writeResultInFile("decoderRes.txt", resultText);
+        } else {
+            // exception
         }
+
+        _mainTextHandler.writeSymbolsStatistics(_symbolsStatistics);
     }
 
 }
