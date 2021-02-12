@@ -15,7 +15,7 @@ public class Decoder {
             if(alpha.getDecoderMap().containsKey(a)) {
                 char symbol = alpha.getDecoderMap().get(a);
                 result.append(symbol);
-                symbolStat.add(line.charAt(symbol));
+                symbolStat.add(symbol);
             } else if(a.equals("")) {
                 result.append(' ');
             } else {
