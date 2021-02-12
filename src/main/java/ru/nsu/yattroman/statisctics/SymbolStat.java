@@ -1,24 +1,20 @@
 package ru.nsu.yattroman.statisctics;
 
-import java.util.HashMap;
+import java.util.HashSet;
 
 public class SymbolStat {
 
-    private HashMap<Character, Integer> symbolsStatistics;
+    private HashSet<Letter> symbolsStatistics;
 
     public SymbolStat(){
-        symbolsStatistics = new HashMap<Character, Integer>();
+        symbolsStatistics = new HashSet<Letter>();
     }
 
-    public HashMap<Character, Integer> getSymbolsStatistics() {
+    public HashSet<Letter> getSymbolsStatistics() {
         return symbolsStatistics;
     }
 
-    public void increaseSymbolAmount(Character symbol){
-        symbolsStatistics.replace(symbol, symbolsStatistics.get(symbol), symbolsStatistics.get(symbol) + 1); // Но в классе все автоматически инициализируется
-    }
-
-    public void initSymbolAmount(Character symbol){
-        symbolsStatistics.put(symbol, 1);
+    public void add(char symbol){
+        symbolsStatistics.add(new Letter(symbol));
     }
 }

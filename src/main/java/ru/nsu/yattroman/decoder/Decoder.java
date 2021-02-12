@@ -1,5 +1,6 @@
 package ru.nsu.yattroman.decoder;
 
+import ru.nsu.yattroman.exception.MorseHandlerException;
 import ru.nsu.yattroman.statisctics.SymbolStat;
 import ru.nsu.yattroman.alphabet.Alphabet;
 
@@ -9,27 +10,16 @@ public class Decoder {
         StringBuilder result = new StringBuilder();
 
         String[] temp = line.split(" ");
+
         for(String a : temp){
             if(alpha.getDecoderMap().containsKey(a)) {
                 char symbol = alpha.getDecoderMap().get(a);
                 result.append(symbol);
-
-                if(!symbolStat.getSymbolsStatistics().containsKey(symbol)){
-                    symbolStat.initSymbolAmount(symbol);
-                } else {
-                    symbolStat.increaseSymbolAmount(symbol);
-                }
-
+                symbolStat.add(line.charAt(symbol));
             } else if(a.equals("")) {
                 result.append(' ');
             } else {
-                result.append('#');
-
-                if(!symbolStat.getSymbolsStatistics().containsKey('#')){
-                    symbolStat.initSymbolAmount('#');
-                } else {
-                    symbolStat.increaseSymbolAmount('#');
-                }
+                throw new MorseHandlerException("There is invalid decoded symbol in text.");
             }
         }
 

@@ -7,7 +7,7 @@ public class Main {
             MorseHandler morseHandler = new MorseHandler();
             morseHandler.doWork();
         } catch (Throwable e){
-            System.out.println("Error!");
+            System.out.println("Error! " + e.getLocalizedMessage());
         }
     }
 

@@ -53,8 +53,8 @@ public class TextHandler {
 
     public void writeSymbolsStatistics(SymbolStat symbolStat){
         try {
-            for (var i: symbolStat.getSymbolsStatistics().keySet()){
-                    _writerSS.write(i.toString() + ": " + symbolStat.getSymbolsStatistics().get(i).toString() + "\n");
+            for (var i: symbolStat.getSymbolsStatistics() ){
+                    _writerSS.write(i.getSymbol() + ": " + i.getAmount() + "\n");
             }
             _writerSS.close();
         } catch (IOException e) {
