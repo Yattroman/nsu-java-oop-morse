@@ -1,5 +1,5 @@
-package ru.parser.textProcessing;
-import ru.parser.SymbolStat;
+package ru.nsu.yattroman.textProcessing;
+import ru.nsu.yattroman.statisctics.SymbolStat;
 
 import java.io.*;
 
@@ -9,7 +9,6 @@ public class TextHandler {
     private FileWriter _writerSS;
     private FileWriter _writerResultText;
     private String _line;
-    private int _indexInLine;
     private boolean _oneLineHaveRead;
 
     public String getLine(){
@@ -18,7 +17,6 @@ public class TextHandler {
 
     public TextHandler(String fileName){
         _reader = null;
-        _indexInLine = 0;
         _line = "";
         _oneLineHaveRead = false;
         try
@@ -55,8 +53,8 @@ public class TextHandler {
 
     public void writeSymbolsStatistics(SymbolStat symbolStat){
         try {
-            for (var i: symbolStat.getSymbolsStatistics().keySet()){
-                    _writerSS.write(i.toString() + ": " + symbolStat.getSymbolsStatistics().get(i).toString() + "\n");
+            for (var i: symbolStat.getSymbolsStatistics() ){
+                    _writerSS.write(i.getSymbol() + ": " + i.getAmount() + "\n");
             }
             _writerSS.close();
         } catch (IOException e) {
