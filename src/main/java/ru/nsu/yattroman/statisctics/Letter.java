@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class Letter {
     private int _amount;
-    private char _symbol;
+    private final char _symbol;
 
     public Letter(char symbol){
         _symbol = symbol;
