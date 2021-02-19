@@ -4,7 +4,7 @@ import java.util.HashSet;
 
 public class SymbolStat {
 
-    private HashSet<Letter> symbolsStatistics;
+    private final HashSet<Letter> symbolsStatistics;
 
     public SymbolStat(){
         symbolsStatistics = new HashSet<Letter>();

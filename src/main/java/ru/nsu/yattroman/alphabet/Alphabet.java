@@ -6,8 +6,8 @@ import java.util.HashMap;
 
 public class Alphabet {
 
-    private HashMap<Character, String> encoderMap;
-    private HashMap<String, Character> decoderMap;
+    private final HashMap<Character, String> encoderMap;
+    private final HashMap<String, Character> decoderMap;
 
     public Alphabet(){
         encoderMap = new HashMap<Character, String>();
